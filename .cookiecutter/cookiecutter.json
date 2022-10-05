@@ -1,0 +1,24 @@
+{
+  "template": "https://github.com/hypothesis/cookiecutters",
+  "checkout": null,
+  "directory": "pypackage",
+  "ignore": [],
+  "extra_context": {
+    "name": "Commando",
+    "package_name": "commando",
+    "slug": "commando",
+    "short_description": "Run commands in repos and send any resulting changes as PRs.",
+    "python_versions": "3.10.6, 3.9.13, 3.8.13, 3.7.13",
+    "github_owner": "hypothesis",
+    "copyright_holder": "Hypothesis",
+    "visibility": "public",
+    "console_script": "yes",
+    "devdata": "no",
+    "services": "no",
+    "dependabot_pip_interval": "monthly",
+    "__entry_point": "commando",
+    "__github_url": "https://github.com/hypothesis/commando",
+    "__pypi_url": "https://pypi.org/project/commando",
+    "__hdev_project_type": "library"
+  }
+}
