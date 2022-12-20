@@ -8,7 +8,7 @@
     "package_name": "commando",
     "slug": "commando",
     "short_description": "Run commands in repos and send any resulting changes as PRs.",
-    "python_versions": "3.10.6, 3.9.13, 3.8.13, 3.7.13",
+    "python_versions": "3.10.6, 3.9.13",
     "github_owner": "hypothesis",
     "copyright_holder": "Hypothesis",
     "visibility": "public",
