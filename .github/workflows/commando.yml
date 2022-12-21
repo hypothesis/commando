@@ -37,6 +37,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Commando Workflow"
           git config --global user.email "<>"
+          gh auth setup-git
       - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
         env:
           GH_TOKEN: ${{ github.token }}
