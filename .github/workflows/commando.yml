@@ -26,4 +26,4 @@ jobs:
       - run: python3.10 -m pip install pipx
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
-      - run: python3.10 -m commando --help
+      - run: commando --help
