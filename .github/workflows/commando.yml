@@ -19,6 +19,10 @@ jobs:
     name: Commando
     runs-on: ubuntu-latest
     steps:
+      - name: Install Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - run: pip install pipx
       - run: pipx install "git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation"
       - run: pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
