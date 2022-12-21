@@ -29,7 +29,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - run: python3.10 -m pip install pipx tox
+      - run: python3.10 -m pip install pipx
+      - run: python3.10 -m pipx install tox
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
       - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
