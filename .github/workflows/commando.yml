@@ -35,7 +35,7 @@ jobs:
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
       - name: Configure git
         run: |
-          git config --global user.name "GitHub Actions CI Workflow"
+          git config --global user.name "GitHub Actions Commando Workflow"
           git config --global user.email "<>"
       - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
         env:
