@@ -19,7 +19,7 @@ jobs:
     name: Commando
     runs-on: ubuntu-latest
     steps:
-    - pip install pipx
-    - pipx install pipx install git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation
-    - pipx install git+https://github.com/hypothesis/commando.git@initial-implementation
-    - command --help
+      - run: pip install pipx
+      - run: pipx install pipx install git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation
+      - run: pipx install git+https://github.com/hypothesis/commando.git@initial-implementation
+      - run: command --help
