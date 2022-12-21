@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "<>"
           gh auth setup-git
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
