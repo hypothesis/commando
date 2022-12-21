@@ -1,0 +1,25 @@
+name: Commando
+on:
+  workflow_dispatch:
+    inputs:
+      repos:
+        type: string
+      branch:
+        type: string
+      command:
+        type: string
+      commit_message:
+        type: string
+      pr_title:
+        type: string
+      pr_body:
+        type: string
+jobs:
+  commando:
+    name: Commando
+    runs-on: ubuntu-latest
+    steps:
+    - pip install pipx
+    - pipx install pipx install git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation
+    - pipx install git+https://github.com/hypothesis/commando.git@initial-implementation
+    - command --help
