@@ -70,6 +70,6 @@ jobs:
         run: gh auth setup-git
         env:
           GH_TOKEN: ${{ steps.gh_token.outputs.GH_TOKEN }}
-      - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message '${{ inputs.commit_message }}' --pr-title "${{ inputs.pr_title }}" --pr-body '${{ inputs.pr_body }}'
+      - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
         env:
           GH_TOKEN: ${{ steps.gh_token.outputs.GH_TOKEN }}
