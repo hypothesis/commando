@@ -67,14 +67,15 @@ jobs:
       - name: Get GitHub token
         id: github_token
         run: |
-          if [ -z "${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}" ]
+          if [ -z "${{ env.HYPOTHESIS_GITHUB_APP_TOKEN }}" ]
           then
             echo GITHUB_TOKEN=$(gha-token --app-id 274948 --installation-id 32440510 --private-key "$PRIVATE_KEY") >> $GITHUB_OUTPUT
           else
-            echo "GITHUB_TOKEN=${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}" >> $GITHUB_OUTPUT
+            echo "GITHUB_TOKEN=${{ env.HYPOTHESIS_GITHUB_APP_TOKEN }}" >> $GITHUB_OUTPUT
           fi
         env:
           PRIVATE_KEY: ${{ secrets.HYPOTHESIS_GITHUB_APP_PRIVATE_KEY }}
+          HYPOTHESIS_GITHUB_APP_TOKEN: ${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}
       - name: Set up git authentication
         run: gh auth setup-git
         env:
