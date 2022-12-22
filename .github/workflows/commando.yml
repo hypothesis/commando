@@ -57,7 +57,7 @@ jobs:
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gha-token.git"
-        if: env.HYPOTHESIS_GITHUB_APP_TOKEN
+        if: ${{ env.HYPOTHESIS_GITHUB_APP_TOKEN == "" }}
         env:
             HYPOTHESIS_GITHUB_APP_TOKEN: ${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}
       - name: Configure git
