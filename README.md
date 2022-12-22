@@ -1,4 +1,5 @@
 <a href="https://github.com/hypothesis/commando/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://img.shields.io/github/workflow/status/hypothesis/commando/CI/main"></a>
+<a href="https://pypi.org/project/commando"><img src="https://img.shields.io/pypi/v/commando"></a>
 <a><img src="https://img.shields.io/badge/python-3.10 | 3.9-success"></a>
 <a href="https://github.com/hypothesis/commando/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-BSD--2--Clause-success"></a>
 <a href="https://github.com/hypothesis/cookiecutters/tree/main/pypackage"><img src="https://img.shields.io/badge/cookiecutter-pypackage-success"></a>
@@ -15,7 +16,7 @@ Commando.
 First [install pipx](https://pypa.github.io/pipx/#install-pipx) then run:
 
 ```terminal
-pipx install git+https://github.com/hypothesis/commando.git
+pipx install commando
 ```
 
 You now have Commando installed! For some help run:
@@ -68,6 +69,20 @@ git clone https://github.com/hypothesis/commando.git
 cd commando
 make help
 ```
+
+## Releasing a New Version of the Project
+
+1. First, to get PyPI publishing working you need to go to:
+   <https://github.com/organizations/hypothesis/settings/secrets/actions/PYPI_TOKEN>
+   and add commando to the `PYPI_TOKEN` secret's selected
+   repositories.
+
+2. Now that the commando project has access to the `PYPI_TOKEN` secret
+   you can release a new version by just [creating a new GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+   Publishing a new GitHub release will automatically trigger
+   [a GitHub Actions workflow](.github/workflows/pypi.yml)
+   that will build the new version of your Python package and upload it to
+   <https://pypi.org/project/commando>.
 
 ## Changing the Project's Python Versions
 
