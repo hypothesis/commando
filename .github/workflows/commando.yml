@@ -40,6 +40,9 @@ on:
       pr_body:
         required: true
         type: string
+    secrets:
+      HYPOTHESIS_GITHUB_APP_PRIVATE_KEY:
+        required: true
 jobs:
   commando:
     name: Commando
