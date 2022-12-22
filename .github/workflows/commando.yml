@@ -42,7 +42,7 @@ on:
         type: string
     secrets:
       HYPOTHESIS_GITHUB_APP_PRIVATE_KEY:
-      HYPOTHESIS_GITHUB_APP_TOKEN:
+        required: true
 jobs:
   commando:
     name: Commando
@@ -57,29 +57,19 @@ jobs:
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gh-pr-upsert.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/commando.git@initial-implementation"
       - run: python3.10 -m pipx install "git+https://github.com/hypothesis/gha-token.git"
-        if: ${{ env.HYPOTHESIS_GITHUB_APP_TOKEN == '' }}
-        env:
-            HYPOTHESIS_GITHUB_APP_TOKEN: ${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}
       - name: Configure git
         run: |
           git config --global user.name "GitHub Actions Commando Workflow"
           git config --global user.email "<>"
       - name: Get GitHub token
-        id: github_token
-        run: |
-          if [ -z "${{ env.HYPOTHESIS_GITHUB_APP_TOKEN }}" ]
-          then
-            echo GITHUB_TOKEN=$(gha-token --app-id 274948 --installation-id 32440510 --private-key "$PRIVATE_KEY") >> $GITHUB_OUTPUT
-          else
-            echo "GITHUB_TOKEN=${{ env.HYPOTHESIS_GITHUB_APP_TOKEN }}" >> $GITHUB_OUTPUT
-          fi
+        id: gh_token
+        run: echo GH_TOKEN=$(gha-token --app-id 274948 --installation-id 32440510 --private-key "$PRIVATE_KEY") >> $GITHUB_OUTPUT
         env:
           PRIVATE_KEY: ${{ secrets.HYPOTHESIS_GITHUB_APP_PRIVATE_KEY }}
-          HYPOTHESIS_GITHUB_APP_TOKEN: ${{ secrets.HYPOTHESIS_GITHUB_APP_TOKEN }}
       - name: Set up git authentication
         run: gh auth setup-git
         env:
-          GITHUB_TOKEN: ${{ steps.github_token.outputs.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.gh_token.outputs.GH_TOKEN }}
       - run: commando --repos ${{ inputs.repos }} --branch "${{ inputs.branch }}" --command "${{ inputs.command }}" --commit-message "${{ inputs.commit_message }}" --pr-title "${{ inputs.pr_title }}" --pr-body "${{ inputs.pr_body }}"
         env:
-          GITHUB_TOKEN: ${{ steps.github_token.outputs.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.gh_token.outputs.GH_TOKEN }}
