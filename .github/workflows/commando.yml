@@ -20,6 +20,26 @@ on:
       pr_body:
         required: true
         type: string
+  workflow_call:
+    inputs:
+      repos:
+        required: true
+        type: string
+      branch:
+        required: true
+        type: string
+      command:
+        required: true
+        type: string
+      commit_message:
+        required: true
+        type: string
+      pr_title:
+        required: true
+        type: string
+      pr_body:
+        required: true
+        type: string
 jobs:
   commando:
     name: Commando
