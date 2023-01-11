@@ -15,7 +15,7 @@
     "console_script": "yes",
     "devdata": "no",
     "services": "no",
-    "pypi": "no",
+    "pypi": "yes",
     "dependabot_pip_interval": "monthly",
     "__entry_point": "commando",
     "__github_url": "https://github.com/hypothesis/commando",
