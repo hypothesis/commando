@@ -20,6 +20,7 @@
     "__entry_point": "commando",
     "__github_url": "https://github.com/hypothesis/commando",
     "__pypi_url": "https://pypi.org/project/commando",
-    "__hdev_project_type": "library"
+    "__hdev_project_type": "library",
+    "__copyright_year": "2022"
   }
 }
