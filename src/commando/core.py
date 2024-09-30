@@ -19,7 +19,7 @@ def _run(cwd, results, command, **kwargs):
 
 def _process_repo(
     repo, command, commit_message, branch, pr_title, pr_body
-):  # pylint:disable=too-many-arguments
+):  # pylint:disable=too-many-arguments,too-many-positional-arguments
     # Collect the results of all commands run for this repo.
     results = []
 
@@ -109,7 +109,7 @@ def _process_repo(
 
 def commando(
     repos, command, commit_message, branch, pr_title, pr_body
-):  # pylint:disable=too-many-arguments
+):  # pylint:disable=too-many-arguments,too-many-positional-arguments
     failed = False
 
     for repo in repos:
